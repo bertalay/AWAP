@@ -99,11 +99,11 @@ class Team(object):
                 self.goals[state.id] = self.board[p[1]][p[0]] #sets it here but good enough
                 return self.board[p[1]][p[0]]
 			
-            if(p[0] + 1 < len(initial_board[0]) and self.board[p[1]][p[0]+1].get_booth() == None):
+            if(p[0] + 1 < len(self.board[0]) and self.board[p[1]][p[0]+1].get_booth() == None):
                 q.put((p[0]+1, p[1]))
             if(p[0] - 1 >= 0 and self.board[p[1]][p[0]-1].get_booth() == None):
                 q.put((p[0]-1, p[1]))
-            if(p[1] + 1 < len(initial_board) and self.board[p[1]+1][p[0]].get_booth() == None):
+            if(p[1] + 1 < len(self.board) and self.board[p[1]+1][p[0]].get_booth() == None):
                 q.put((p[0], p[1]+1))
             if(p[1] - 1 >= 0 and self.board[p[1]-1][p[0]].get_booth() == None):
                 q.put((p[0], p[1]-1))
