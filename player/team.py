@@ -5,10 +5,8 @@ Write the __init__ and the step functions. Further explanations
 about these functions are detailed in the wiki.
 
 List your Andrew ID's up here!
-andrewid1
-andrewid2
-andrewid3
-andrewid4
+aylu
+jafish
 """
 from awap2019 import Tile, Direction, State
 
@@ -27,7 +25,7 @@ class Team(object):
         self.team_size = team_size
         self.company_info = company_info
 
-        self.team_name = # Add your team name here!
+        self.team_name = "this is fine"
 
     def step(self, visible_board, states, score):
         """
