@@ -15,7 +15,7 @@ from absl import app, flags
 from player.team import Team as P
 
 FLAGS = flags.FLAGS
-flags.DEFINE_integer('num_moves', 300, 'The number of moves in a game.')
+flags.DEFINE_integer('num_moves', 40, 'The number of moves in a game.')
 flags.DEFINE_integer('score_threshold', 200, 'The score needed to win the game')
 
 flags.DEFINE_string('board_directory', 'boards/', 'The directory where the'
@@ -23,7 +23,7 @@ flags.DEFINE_string('board_directory', 'boards/', 'The directory where the'
 flags.DEFINE_string('log_directory', 'logs/', 'The path to the log file.')
 flags.DEFINE_string('companies', 'companies.txt', 'The path to the list of '
                                                   'companies.')
-flags.DEFINE_string('board_file', 'tiny', 'The name of the board file.')
+flags.DEFINE_string('board_file', 'gates4', 'The name of the board file.')
 flags.DEFINE_string('log_file', 'out', 'The file to output to.')
 flags.DEFINE_boolean('debug', False, 'Debug mode')
 

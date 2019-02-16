@@ -11,6 +11,7 @@ jafish
 from awap2019 import Tile, Direction, State
 
 class Team(object):
+    
     def __init__(self, initial_board, team_size, company_info):
         """
         The initializer is for you to precompute anything from the
@@ -22,17 +23,26 @@ class Team(object):
         always be 4.
         """
         self.board = initial_board
+        
+        self.remembered_board = [[0 for i in range(len(initial_board[0])) for j in range(len(initial_board))]
+        self.visited_companies = []
+        
         self.team_size = team_size
         self.company_info = company_info
 
         self.team_name = "this is fine"
+        print(self.team_name)
+        for s in self.board:
+            acc = ""
+            for k in s:
+                acc += str(k.get_booth()) + " "
+            print(acc)
+         
+        print(self.board[1][2].get_booth())
+        print(self.company_info)
 
     def step(self, visible_board, states, score):
-        """
-        The step function should return a list of four Directions.
 
-        For more information on what visible_board, states, and score
-        are, please look on the wiki.
-        """
+        self.remembered_board = some shit
 
-        pass
+        return [Direction.UP, Direction.LEFT, Direction.DOWN, Direction.RIGHT]
