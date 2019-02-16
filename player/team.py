@@ -26,7 +26,7 @@ class Team(object):
         self.board = initial_board
         self.visited = []
         self.remembered_board = [[0 for i in range(len(initial_board[0]))] for j in range(len(initial_board))]
-		self.goals = [None, None, None, None]
+        self.goals = [None, None, None, None]
         
         self.team_size = team_size
         self.company_info = company_info
@@ -44,15 +44,35 @@ class Team(object):
 
 	#return Tile of the company end of line
 	#@ensures new goal has not been visited yet, and also no overlap in goals
-	def goal_finder(self, state):
-		lim = 100
-		acc = [] #tuples that represent the tentative distance
-		q = queue.Queue()
-		q.put((state.x, state.y), Direction.NONE)
-		while():
+    def goal_finder(self, state):
+        lim = 100
+        h = []
+        #acc = [] #tuples that represent the tentative distance
+        q = queue.Queue()
+        q.put((state.y, state.x))
+        while(not q.empty()):
+            
+            p = q.get()
+            while(p in h):
+                p = q.get()
 			
-		
-		
+            if(self.board[p[1]][p[0]].get_line() != None and not self.board[p[1]][p[0]] in self.goals and self.board[p[1]][p[0]] in self.visited):
+				# also check if in visited or goals
+                self.goals[state.id] = self.board[p[1]][p[0]] #sets it here but good enough
+                return self.board[p[1]][p[0]]
+			
+            if(p[0] + 1 < len(initial_board[0]) and self.board[p[1]][p[0]+1].get_booth() == None):
+                q.put((p[0]+1, p[1]))
+            if(p[0] - 1 >= 0 and self.board[p[1]][p[0]-1].get_booth() == None):
+                q.put((p[0]-1, p[1]))
+            if(p[1] + 1 < len(initial_board) and self.board[p[1]+1][p[0]].get_booth() == None):
+                q.put((p[0], p[1]+1))
+            if(p[1] - 1 >= 0 and self.board[p[1]-1][p[0]].get_booth() == None):
+                q.put((p[0], p[1]-1))
+				
+            h.append(p)
+			
+        return self.board[state.y][state.x]
 
 
     def step(self, visible_board, states, score):
