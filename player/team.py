@@ -23,9 +23,9 @@ class Team(object):
         always be 4.
         """
         self.board = initial_board
-        
-        self.remembered_board = [[0 for i in range(len(initial_board[0])) for j in range(len(initial_board))]
-        self.visited_companies = []
+        self.visited = []
+        self.remembered_board = [[0 for i in range(len(initial_board[0]))] for j in range(len(initial_board))]
+
         
         self.team_size = team_size
         self.company_info = company_info
@@ -43,6 +43,5 @@ class Team(object):
 
     def step(self, visible_board, states, score):
 
-        self.remembered_board = some shit
 
         return [Direction.UP, Direction.LEFT, Direction.DOWN, Direction.RIGHT]
