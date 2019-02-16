@@ -22,6 +22,14 @@ class Team(object):
         on the wiki. team_size, although passed to you as a parameter, will
         always be 4.
         """
+
+        for i in range(len(initial_board)):
+            acc = ""
+            for j in range(len(initial_board[0])):
+                acc += str(initial_board[i][j].get_line()) + " "
+            print(acc)
+
+
         self.team_size = team_size
         self.company_info = company_info
         self.board = initial_board
@@ -31,18 +39,20 @@ class Team(object):
         self.phase = ["spreading" for i in range(self.team_size)]
         self.turnCount = 0
         
-        
+        pointDistribution = [[0 for i in range(len(initial_board[0]))] for j in range(len(initial_board))]
 
         self.team_name = "this is fine"
 
     def step(self, visible_board, states, score):
-        returnList = [Direction.UP, Direction.UP, Direction.UP, Direction.UP]
+        returnList = []
         print(self.turnCount)
         self.turnCount += 1
-        for i in range(self.team_size):
+        """for i in range(self.team_size):
             if self.phase == "spreading":
                 i = i + 1 - 1
                 #implmement
-            
+            else if self.phase == "moving":
+                i=i+1-1
             #same sort of structure for each of these phases
-        return returnList
+        #return returnList"""
+        return [Direction.UP, Direction.UP, Direction.UP, Direction.UP]
