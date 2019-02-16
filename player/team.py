@@ -45,6 +45,8 @@ class Team(object):
         self.turnCount = 0
         self.goals = [None, None, None, None]
         
+
+        #Sets goals to initially spread out to the four corners
         found = False
         i = 1
         while(not found):
@@ -52,28 +54,31 @@ class Team(object):
                 if str(initial_board[j][i-j].get_booth()) == "None":
                     found = True
                     self.goals[0] = (j, i-j)
+            i += 1
         found = False
         i = 1
         while(not found):
             for j in range(0, i + 1):
-                if str(initial_board[self.dimensions - 1 - j][i-j].get_booth()) == "None":
+                if str(initial_board[self.dimensions[0] - 1 - j][i-j].get_booth()) == "None":
                     found = True
-                    self.goals[1] = (self.dimensions - 1 - j, i-j)
+                    self.goals[1] = (self.dimensions[0] - 1 - j, i-j)
+            i += 1
         found = False
         i = 1
         while(not found):
             for j in range(0, i + 1):
-                if str(initial_board[j][self.dimensions - 1 - (i-j)].get_booth()) == "None":
+                if str(initial_board[j][self.dimensions[1] - 1 - (i-j)].get_booth()) == "None":
                     found = True
-                    self.goals[2] = (j, self.dimensions - 1 - (i-j))
+                    self.goals[2] = (j, self.dimensions[1] - 1 - (i-j))
+            i += 1
         found = False
         i = 1
         while(not found):
             for j in range(0, i + 1):
-                if str(initial_board[self.dimensions - 1 - j][self.dimensions - 1 - (i-j)].get_booth()) == "None":
+                if str(initial_board[self.dimensions[0] - 1 - j][self.dimensions[1] - 1 - (i-j)].get_booth()) == "None":
                     found = True
-                    self.goals[3] = (self.dimensions - 1 - j, self.dimensions - 1 - (i-j))
-
+                    self.goals[3] = (self.dimensions[0] - 1 - j, self.dimensions[1] - 1 - (i-j))
+            i += 1
         
 
 	#return Tile of the company end of line
@@ -88,7 +93,6 @@ class Team(object):
     
     def step(self, visible_board, states, score):
         returnList = []
-        print(self.turnCount)
         self.turnCount += 1
         """for i in range(self.team_size):
             if self.phase == "spreading":
@@ -101,7 +105,7 @@ class Team(object):
 
 
         #add company to self.visited
-
+        #return returnList
         return [Direction.UP, Direction.UP, Direction.UP, Direction.UP]
 
 
